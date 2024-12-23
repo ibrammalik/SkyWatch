@@ -1,21 +1,22 @@
-import { Button, Typography, AppBar, Toolbar, Container } from "@mui/material";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Dashboard from "./components/Dashboard";
+import BottomNavBar from "./components/BottomNavBar";
 
 const App = () => (
-  <>
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6">My PWA App</Typography>
-      </Toolbar>
-    </AppBar>
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        Welcome to My PWA!
-      </Typography>
-      <Button variant="contained" color="primary">
-        Get Started
-      </Button>
-    </Container>
-  </>
+  <Router>
+    <div style={{ paddingBottom: "56px" }}>
+      <Dashboard />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </div>
+
+    <BottomNavBar />
+  </Router>
 );
 
 export default App;
